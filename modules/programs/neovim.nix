@@ -59,6 +59,7 @@ let
         (map (x: if x ? plugin && x.optional == true then x.plugin else null)
           cfg.plugins);
     };
+    beforePlugins = cfg.beforePlugins;
     customRC = cfg.extraConfig
       + pkgs.lib.concatMapStrings pluginConfig cfg.plugins;
   };
@@ -216,6 +217,21 @@ in {
         default = [ ];
         example = "[ pkgs.shfmt ]";
         description = "Extra packages available to nvim.";
+      };
+
+      beforePlugins = mkOption {
+        type = types.lines;
+        default = "";
+        example = ''
+          let g:ale_disable_lsp = 1
+        '';
+        description = ''
+          Custom vimrc lines to be loaded before plugins are loaded.
+
+          </para><para>
+
+          This option is mutually exclusive with <varname>configure</varname>.
+        '';
       };
 
       plugins = mkOption {
