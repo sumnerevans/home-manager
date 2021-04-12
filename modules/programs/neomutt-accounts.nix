@@ -24,6 +24,15 @@ with lib;
       '';
     };
 
+    sortOrder = mkOption {
+      type = types.int;
+      default = 0;
+      description = ''
+        Sort order of this account (this will determine the order in which the
+        accounts will be added to the neomutt config).
+      '';
+    };
+
     extraConfig = mkOption {
       type = types.lines;
       default = "";

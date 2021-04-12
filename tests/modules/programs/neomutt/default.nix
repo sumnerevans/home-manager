@@ -7,4 +7,5 @@
   neomutt-with-binds-invalid-settings =
     ./neomutt-with-binds-invalid-settings.nix;
   neomutt-with-gpg = ./neomutt-with-gpg.nix;
+  neomutt-sort-order = ./neomutt-sort-order.nix;
 }

@@ -6,8 +6,8 @@ let
 
   cfg = config.programs.neomutt;
 
-  neomuttAccounts =
-    filter (a: a.neomutt.enable) (attrValues config.accounts.email.accounts);
+  neomuttAccounts = sort (a: b: a.neomutt.sortOrder < b.neomutt.sortOrder)
+    (filter (a: a.neomutt.enable) (attrValues config.accounts.email.accounts));
 
   sidebarModule = types.submodule {
     options = {
